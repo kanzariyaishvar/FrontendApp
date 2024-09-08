@@ -13,10 +13,12 @@ const AddTalentDetail = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getDocs(Collection); // Use getDocs to fetch the collection data
-      setProduct(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      const querySnapshot = await getDocs(Collection);
+      const data = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      setProduct(data);
     };
-    fetchData();
+    fetchData()
+    
   }, [Collection]);
 
   const handleTalentChange = (index, e) => {
@@ -165,37 +167,21 @@ const AddTalentDetail = () => {
       ) : (
         <div className="card p-4 shadow" id="part-2">
           <h2 className="mb-4">Purchase Orders</h2>
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th>ClientName</th>
-                <th>Currency</th>
-                <th>Budget</th>
-                <th>PoNumber</th>
-                <th>PoType</th>
-                <th>ReceivedFromMaile</th>
-                <th>ReceivedFromName</th>
-                <th>ReceivedOn</th>
-                {/* Add more columns as necessary */}
-              </tr>
-            </thead>
-            <tbody>
+            
+            <div>
               {Products.map((product) => (
-                <tr key={product.id}>
-                  <td>{product.clientName || 'N/A'}</td>
-                  <td>{product.currency}</td>
-                  <td>{product.budget || 'N/A'}</td>
-                  {/* <td>{product.poEndDate || 'N/A'}</td> */}
-                  <td>{product.poNumber}</td>
-                  <td>{product.poType}</td>
-                  <td>{product.receivedFromEmail}</td>
-                  <td>{product.receivedFromName}</td>
-                  <td>{product.receivedOn}</td>
-                  {/* Add more product details here */}
-                </tr>
+                <div key={product.id} className='row'>
+                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>ClientName : {product.clientName }</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>Currency : {product.currency}</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>Budget : {product.budget }</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>PoNumber : {product.poNumber}</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>PoType : {product.poType}</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>ReceivedFromMaile : {product.receivedFromEmail}</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>ReceivedFromName : {product.receivedFromName}</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1 mb-4'>ReceivedOn : {product.receivedOn}</div>
+                </div>
               ))}
-            </tbody>
-          </table>
+            </div>
         </div>
       )}
     </div>
