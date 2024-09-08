@@ -2,6 +2,8 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../Firebase/firebase'; // Make sure the path is correct
 import React, { useEffect, useState } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
+import '../App.css'
+
 
 const initialTalent = { id: 1, name: '', contractDuration: '', billRate: '', standardTimeBR: '', overTimeBR: '', currency: 'USD' };
 
@@ -170,15 +172,15 @@ const AddTalentDetail = () => {
             
             <div>
               {Products.map((product) => (
-                <div key={product.id} className='row'>
-                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>ClientName : {product.clientName }</div>
-                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>Currency : {product.currency}</div>
-                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>Budget : {product.budget }</div>
-                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>PoNumber : {product.poNumber}</div>
-                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>PoType : {product.poType}</div>
-                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>ReceivedFromMaile : {product.receivedFromEmail}</div>
-                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1'>ReceivedFromName : {product.receivedFromName}</div>
-                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-1 mb-4'>ReceivedOn : {product.receivedOn}</div>
+                <div key={product.id} className='row w-100 viewdata'>
+                  <div className='col-sm-12 col-md-6 col-lg-4 '>ClientName : {product.clientName }</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 '>Currency : {product.currency}</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 '>Budget : {product.budget }</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 '>PoNumber : {product.poNumber}</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 '>PoType : {product.poType}</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 '>ReceivedFromMaile : {product.receivedFromEmail}</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4 '>ReceivedFromName : {product.receivedFromName}</div>
+                  <div className='col-sm-12 col-md-6 col-lg-4  mb-4'>ReceivedOn : {product.receivedOn}</div>
                 </div>
               ))}
             </div>
